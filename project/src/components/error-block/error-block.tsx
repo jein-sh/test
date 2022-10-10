@@ -1,9 +1,7 @@
-import Container from "../../styled/container/container";
 import {Title, ErrorWrapper, ErrorImage, Button, ErrorText } from "./styles";
 
-function Error(): JSX.Element {
+function ErrorBlock(): JSX.Element {
   return (
-    <Container>
         <ErrorWrapper>
           <ErrorImage>
             <picture>
@@ -14,8 +12,7 @@ function Error(): JSX.Element {
         <ErrorText>Постараемся быстро починить</ErrorText>
         <Button type="button">Попробовать снова</Button>
       </ErrorWrapper>
-    </Container>
   );
 }
 
-export default Error;
+export default ErrorBlock;

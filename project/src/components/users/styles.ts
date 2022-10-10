@@ -27,7 +27,8 @@ export const UsersSeparate = styled.div`
     position: absolute;
     top: 50%;
     left: 24px;
-    width: 1200px;
+    width: calc(100vw - 80px);
+    max-width: 1200px;
     height: 1px;
     background-color: #C3C3C6;
     z-index: -1;

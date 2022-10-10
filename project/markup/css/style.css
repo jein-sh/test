@@ -1,4 +1,4 @@
-*,
+/* *,
 *::before,
 *::after {
   box-sizing: border-box;
@@ -24,7 +24,7 @@ body {
   width: 100%;
   height: 100%;
   background-color: #ffffff;
-}
+} */
 
 @font-face {
   font-style: normal;
@@ -64,14 +64,14 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
-
+/* 
 header {
   flex-shrink: 0;
 }
 
 main {
   flex-grow: 1;
-}
+} */
 
 .visually-hidden {
   position: absolute;
@@ -90,14 +90,14 @@ main {
   clip-path: inset(100%);
 }
 
-.container {
+/* .container {
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 16px;
-}
+} */
 
-.top-bar {
+/* .top-bar {
   display: flex;
   flex-direction: column;
   border-bottom: 0.6px solid #C3C3C6;
@@ -108,9 +108,9 @@ main {
   font-weight: 700;
   font-size: 24px;
   line-height: 28px;
-}
+} */
 
-.search {
+/* .search {
   display: flex;
   align-items: center;
   background-color: #F7F7F8;
@@ -156,9 +156,9 @@ main {
 .search input::placeholder {
   font-weight: 500;
   color: #C3C3C6;
-}
+} */
 
-.tabs {
+/* .tabs {
   display: flex;
   width: 100%;
   overflow: auto;
@@ -179,22 +179,22 @@ main {
 
 .tabs__btn:hover {
   color:#050510;
-}
+} */
 
-
+/* 
 .tabs__btn--active {
   color: #050510;
   font-weight: 600;
   border-bottom: 2px solid #6534FF;
-}
+} */
 
-.error {
+/* .error {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding-top: 133px;
-}
+} */
 
 .error__image {
   width: 52px;
@@ -202,13 +202,13 @@ main {
   margin-bottom: 8px;
 }
 
-.error__image img {
+/* .error__image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
+} */
 
-.error__title {
+/* .error__title {
   font-size: 17px;
   line-height: 22px;
   font-weight: 600;
@@ -239,9 +239,9 @@ main {
 .error__button:focus {
   opacity: 0.7;
   border-bottom: 1px solid #6534FF;
-}
+} */
 
-.users {
+/* .users {
   display: flex;
   flex-direction: column;
   padding: 22px 0;
@@ -339,7 +339,7 @@ main {
 .user__date {
   margin-left: 10px;
   color: #55555C;
-}
+} */
 
 .popup {
   position: fixed;
@@ -446,7 +446,7 @@ main {
   border-radius: 50%;
   cursor: pointer;
 }
-
+/* 
 .profile {
   display: flex;
   flex-direction: column;
@@ -573,4 +573,4 @@ main {
 
 .profile__old {
   color: #97979B;
-}
+} */

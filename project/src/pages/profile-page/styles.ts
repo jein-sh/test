@@ -39,9 +39,10 @@ export const Tag = styled.span`
   line-height: 22px;
   margin: 0 0 0 4px;
   color: #97979B;
+  text-transform: lowercase;
 `
 
-export const Department = styled.p`
+export const Position = styled.p`
   font-size: 13px;
   line-height: 16px;
   color: #55555C;
@@ -112,6 +113,6 @@ export const Phone = styled(A)`
   }
 `
 
-export const Old = styled.div`
+export const Age = styled.div`
   color: #97979B;
 `

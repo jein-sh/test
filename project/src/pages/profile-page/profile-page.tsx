@@ -2,24 +2,51 @@ import Arrow from "../../components/svg/arrow-svg";
 import PhoneSvg from "../../components/svg/phone-svg";
 import StarSvg from "../../components/svg/start-svg";
 import { Img, P } from "../../styled";
-import { Avatar, BottomContainer, BtnBack, Department, InfoImg, InfoItem, InfoList, Name, Old, Phone, ProfileContainer, Tag, Top, TopContainer} from "./styles";
+import { Avatar, BottomContainer, BtnBack, Position, InfoImg, InfoItem, InfoList, Name, Age, Phone, ProfileContainer, Tag, Top, TopContainer} from "./styles";
+import { UserType } from '../../types';
+import { useNavigate, useParams } from "react-router-dom";
+import { useAppSelector } from "../../hooks";
+import ErrorPage from "../error-page/error-page";
+import { AppRoute } from "../../const";
+import dayjs from "dayjs";
+import relativeTime from 'dayjs/plugin/relativeTime';
+dayjs.extend(relativeTime);
+require('dayjs/locale/ru');
 
 
 function ProfilePage(): JSX.Element {
+  const params = useParams();
+  const navigate = useNavigate();
+  const {users} = useAppSelector((state) => state);
+  console.log(users, params.id)
+  
+  const user: UserType | undefined = users.find((user) => user.id === params.id);
+
+  if (!user) {
+    return <ErrorPage />
+  }
+
+  const {avatarUrl, firstName, lastName, userTag, position, birthday, phone} = user;
+  const userDate = dayjs(birthday).locale('ru').format('D MMMM YYYY');
+  const userAge = dayjs(birthday).locale('ru').toNow(true);
+  const phoneNumber = phone.replace(/[^0-9]/g,"");
+
+  const phoneMask = `+${phoneNumber.substring(0, 1)} (${phoneNumber.substring(1, 4)}) ${phoneNumber.substring(4, 7)} ${phoneNumber.substring(7, 9)} ${phoneNumber.substring(9, 11)}`
+
   return (
     <main>
       <ProfileContainer>
         <Top>
           <TopContainer>
-            <BtnBack>
+            <BtnBack onClick={() => navigate(AppRoute.Main)}>
               <Arrow />
             </BtnBack>
             <Avatar>
-              <Img src="img/avatar.png" width="72" height="72" />
+              <Img src={avatarUrl} width="72" height="72" />
             </Avatar>
             <div>
-              <Name>Андрей Иванов<Tag>iv</Tag></Name>
-              <Department>Designer</Department>
+              <Name>{firstName} {lastName}<Tag>{userTag}</Tag></Name>
+              <Position>{position}</Position>
             </div>
           </TopContainer>
         </Top>
@@ -27,14 +54,14 @@ function ProfilePage(): JSX.Element {
           <InfoList>
             <InfoItem>
             <InfoImg><StarSvg /></InfoImg>
-              <P>5 июня 1996</P>
+              <P>{userDate}</P>
             </InfoItem>
             <InfoItem>
               <InfoImg><PhoneSvg /></InfoImg>
-              <Phone href="tel:+79999009090">+7 (999) 900 90 90</Phone>
+              <Phone href={`tel:+${phoneNumber}`}>{phoneMask}</Phone>
             </InfoItem>
           </InfoList>
-          <Old>24 года</Old>
+          <Age>{userAge}</Age>
         </BottomContainer>
       </ProfileContainer>
     </main>

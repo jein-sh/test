@@ -1,17 +1,26 @@
 import { Img } from "../../styled";
-import { Avatar, Department, Link, Name, Tag, UserContainer } from "./styles";
+import { Avatar, Position, UserLink, Name, Tag, UserContainer } from "./styles";
+import { UserType } from '../../types';
+import { AppRoute } from "../../const";
+import { useNavigate } from "react-router-dom";
 
+type UserProps = {
+  user: UserType;
+}
 
-function User(): JSX.Element {
+function User({user}:UserProps): JSX.Element {
+  const navigate = useNavigate();
+  const {id, avatarUrl, firstName, lastName, userTag, position} = user;
+
   return (
     <UserContainer>
-      <Link href="#todo"></Link>
+      <UserLink onClick={() => navigate(`/user/${id}`)}></UserLink>
       <Avatar>
-        <Img src="img/avatar.png" width="72" height="72"/>
+        <Img src={avatarUrl} width="72" height="72"/>
       </Avatar>
       <div>
-        <Name>Андрей Иванов<Tag>iv</Tag></Name>
-        <Department>Designer</Department>
+        <Name>{firstName} {lastName}<Tag>{userTag}</Tag></Name>
+        <Position>{position}</Position>
       </div>
     </UserContainer>
   );

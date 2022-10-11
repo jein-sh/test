@@ -7,7 +7,7 @@ export const UserContainer = styled.article`
     align-items: center;
 `
 
-export const Link = styled(A)`
+export const UserLink = styled(A)`
   position: absolute;
   top: 0;
   left: 0;
@@ -35,9 +35,10 @@ export const Tag = styled.span`
     line-height: 18px;
     margin: 0 0 0 4px;
     color: #97979B;
+    text-transform: lowercase;
 `
   
-export const Department = styled(P)`
+export const Position = styled(P)`
     font-size: 13px;
     line-height: 16px;
     color: #55555C;

@@ -1,7 +1,7 @@
 import { AxiosInstance } from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AppDispatch, State } from '../types';
-import { loadUsers, setDataLoadedStatus } from './action';
+import { filterUsers, loadUsers, setDataLoadedStatus } from './action';
 
 export const fetchUsersAction = createAsyncThunk<void, undefined, {
   dispatch: AppDispatch,
@@ -10,9 +10,10 @@ export const fetchUsersAction = createAsyncThunk<void, undefined, {
 }>(
   'data/fetchUsers',
   async (_arg, {dispatch, extra: api}) => {
-    const {data} = await api.get("/users?__dynamic=true");
+    const {data} = await api.get("/users?__example=all");
     dispatch(setDataLoadedStatus(true));
     dispatch(loadUsers(data.items));
+    dispatch(filterUsers());
     dispatch(setDataLoadedStatus(false));
   },
 );

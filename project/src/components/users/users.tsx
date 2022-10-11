@@ -7,7 +7,6 @@ function Users(): JSX.Element {
 
   const {users} = useAppSelector((state) => state);
 
-  console.log(users)
   return (
     <UsersContainer>
       <Ul>

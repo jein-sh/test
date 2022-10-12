@@ -8,3 +8,8 @@ export const setDataLoadedStatus = createAction<boolean>('data/setDataLoadedStat
 export const departmentChoice = createAction<{currentDepartment : string}>('departmentChoice');
 
 export const filterUsers = createAction('filterUsers');
+
+export const sortTypeChoice = createAction<{currentSortType : string}>('sortTypeChoice');
+
+export const sortUsers = createAction('sortUsers');
+

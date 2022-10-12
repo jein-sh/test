@@ -1,16 +1,20 @@
 import { Img } from "../../styled";
-import { Avatar, Position, UserLink, Name, Tag, UserContainer } from "./styles";
+import { Avatar, Position, UserLink, Name, Tag, UserContainer, UserDate, Info } from "./styles";
 import { UserType } from '../../types';
-import { AppRoute } from "../../const";
 import { useNavigate } from "react-router-dom";
+import dayjs from "dayjs";
+require('dayjs/locale/ru');
 
 type UserProps = {
   user: UserType;
+  dateShow: boolean
 }
 
-function User({user}:UserProps): JSX.Element {
+function User({user, dateShow}:UserProps): JSX.Element {
   const navigate = useNavigate();
-  const {id, avatarUrl, firstName, lastName, userTag, position} = user;
+  const {id, avatarUrl, firstName, lastName, userTag, position, birthday} = user;
+  const userBirthday = dayjs(birthday).locale('ru').format('D MMM');
+  const tag = userTag.replace(/[^a-zа-я ]/ui,"").slice(0,2);
 
   return (
     <UserContainer>
@@ -18,10 +22,11 @@ function User({user}:UserProps): JSX.Element {
       <Avatar>
         <Img src={avatarUrl} width="72" height="72"/>
       </Avatar>
-      <div>
-        <Name>{firstName} {lastName}<Tag>{userTag}</Tag></Name>
+      <Info>
+        <Name>{firstName} {lastName}<Tag>{tag}</Tag></Name>
         <Position>{position}</Position>
-      </div>
+      </Info>
+      <UserDate show={dateShow}>{userBirthday}</UserDate>
     </UserContainer>
   );
 }

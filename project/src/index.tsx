@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import App from './components/app/app';
 import { store } from './store';
-import { filterUsers } from './store/action';
 import { fetchUsersAction } from './store/api-action';
 
 store.dispatch(fetchUsersAction());

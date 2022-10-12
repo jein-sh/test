@@ -1,20 +1,23 @@
 import {createReducer} from '@reduxjs/toolkit';
-import { departmentChoice, filterUsers, loadUsers, setDataLoadedStatus } from './action';
+import { departmentChoice, filterUsers, loadUsers, setDataLoadedStatus, sortTypeChoice, sortUsers } from './action';
 import { UsersType } from '../types';
-import { getFilterUsers } from '../untils';
+import { getFilterUsers, getSortedUsers } from '../untils';
+import { SortType } from '../const';
 
 type InitialState = {
   isDataLoaded: boolean,
   allUsers: UsersType,
   users: UsersType,
-  department: string
+  department: string,
+  sortType: string
 };
 
 const initialState : InitialState = {
   isDataLoaded: false,
   allUsers: [],
   users: [],
-  department: 'all'
+  department: 'all',
+  sortType: SortType.Abc
 };
 
 const reducer = createReducer(initialState, (builder) => {
@@ -31,6 +34,13 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(filterUsers, (state) => {
       state.users = getFilterUsers(state.allUsers, state.department);
+    })
+    .addCase(sortTypeChoice, (state, action) => {
+      const {currentSortType} = action.payload;
+      state.sortType = currentSortType;
+    })
+    .addCase(sortUsers, (state) => {
+      state.users = getSortedUsers(state.users, state.sortType);
     })
 
 });

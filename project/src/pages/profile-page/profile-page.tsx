@@ -30,6 +30,7 @@ function ProfilePage(): JSX.Element {
   const userDate = dayjs(birthday).locale('ru').format('D MMMM YYYY');
   const userAge = dayjs(birthday).locale('ru').toNow(true);
   const phoneNumber = phone.replace(/[^0-9]/g,"");
+  const tag = userTag.replace(/[^a-zа-я ]/ui,"").slice(0,2);
 
   const phoneMask = `+${phoneNumber.substring(0, 1)} (${phoneNumber.substring(1, 4)}) ${phoneNumber.substring(4, 7)} ${phoneNumber.substring(7, 9)} ${phoneNumber.substring(9, 11)}`
 
@@ -45,7 +46,7 @@ function ProfilePage(): JSX.Element {
               <Img src={avatarUrl} width="72" height="72" />
             </Avatar>
             <div>
-              <Name>{firstName} {lastName}<Tag>{userTag}</Tag></Name>
+              <Name>{firstName} {lastName}<Tag>{tag}</Tag></Name>
               <Position>{position}</Position>
             </div>
           </TopContainer>

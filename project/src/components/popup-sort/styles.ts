@@ -1,15 +1,16 @@
 import styled from 'styled-components';
 
-export const Popup = styled.div`
+export const Popup = styled.div<{ isOpened: boolean }>`
+  display: ${(props) => props.isOpened ? "flex" : "none"};
   position: fixed;
   width: 100vw;
   height: 100vh;
   top: 0;
   left: 0;
   background-color: rgba(5, 5, 16, 0.16);
-  display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 20;
 `
 
 export const Container = styled.div`

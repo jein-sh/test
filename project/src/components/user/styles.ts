@@ -16,6 +16,10 @@ export const UserLink = styled(A)`
   cursor: pointer;
 `
 
+export const Info = styled.div`
+  margin-right: auto;
+`
+
 export const Avatar = styled.div`
     width: 72px;
     height: 72px;
@@ -44,7 +48,8 @@ export const Position = styled(P)`
     color: #55555C;
 `
   
-export const Date = styled(P)`
+export const UserDate = styled(P)<{show : boolean}>`
+    display: ${(props) => (props.show ? "block" : "none")};
     margin-left: 10px;
     color: #55555C;
 `

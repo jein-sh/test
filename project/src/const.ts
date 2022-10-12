@@ -18,3 +18,8 @@ export enum Departments {
     support = 'Техподдержка',
     analytics = 'Аналитика'
 }
+
+export enum SortType {
+  Abc = 'sort-abc',
+  Date = 'sort-date',
+}

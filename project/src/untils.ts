@@ -24,10 +24,17 @@ export const getSortedUsers = (users : UsersType, sortType : string) : UsersType
 
 export const separateDateBefore = (users: UsersType) => {
     const today = dayjs().dayOfYear();
-    return users.filter(user => dayjs(user.birthday).dayOfYear() <= today);
+    return users.filter(user => dayjs(user.birthday).dayOfYear() < today);
 }
 
 export const separateDateAfter = (users: UsersType) => {
     const today = dayjs().dayOfYear();
     return users.filter(user => dayjs(user.birthday).dayOfYear() >= today);
+}
+
+export const getFilterSearch = (users: UsersType, search: string) => {
+    return users.filter((user) => (user.firstName.toLowerCase().indexOf(search.toLowerCase()) > -1)
+      || ( user.lastName.toLowerCase().indexOf(search.toLowerCase()) > -1 )
+      || ( user.userTag.toLowerCase().indexOf(search.toLowerCase()) > -1 )
+    );
 }

@@ -1,6 +1,7 @@
 import { Departments } from "../../const";
 import { useAppDispatch, useAppSelector } from "../../hooks";
-import { departmentChoice, filterUsers, sortUsers } from "../../store/action";
+import { departmentChoice, filterSearch, sortUsers } from "../../store/action";
+import { fetchDepartmentUsersAction } from "../../store/api-action";
 import { TabBtn, TabsContainer } from "./styles";
 
 function Tabs(): JSX.Element {
@@ -15,8 +16,9 @@ function Tabs(): JSX.Element {
           active={key === department} 
           onClick={() => {
             dispatch(departmentChoice({currentDepartment: key})); 
-            dispatch(filterUsers());
+            dispatch(fetchDepartmentUsersAction(key));
             dispatch(sortUsers());
+            dispatch(filterSearch());
           }}
         >{item}</TabBtn>)
       )}

@@ -37,4 +37,36 @@ export const GlobalStyle = createGlobalStyle`
   main {
     flex-grow: 1;
   }
+
+  @font-face {
+  font-style: normal;
+  font-weight: 400;
+  font-family: "Inter";
+  font-display: swap;
+  src: url("../fonts/Inter-Regular.woff2") format("woff2"), url("../fonts/Inter-Regular.woff") format("woff");
+  }
+
+  @font-face {
+    font-style: normal;
+    font-weight: 500;
+    font-family: "Inter";
+    font-display: swap;
+    src: url("../fonts/Inter-Medium.woff2") format("woff2"), url("../fonts/Inter-Medium.woff") format("woff");
+  }
+
+  @font-face {
+    font-style: normal;
+    font-weight: 600;
+    font-family: "Inter";
+    font-display: swap;
+    src: url("../fonts/Inter-SemiBold.woff2") format("woff2"), url("../fonts/Inter-SemiBold.woff") format("woff");
+  }
+
+  @font-face {
+    font-style: normal;
+    font-weight: 700;
+    font-family: "Inter";
+    font-display: swap;
+    src: url("../fonts/Inter-Bold.woff2") format("woff2"), url("../fonts/Inter-Bold.woff") format("woff");
+  }
 `

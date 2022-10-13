@@ -1,10 +1,10 @@
 import { useState } from "react";
 import Container from "../../styled/container/container";
 import PopupSort from "../popup-sort/popup-sort";
+import SearchForm from "../search-form/search-form";
 import ListSvg from "../svg/list-svg";
-import SearchSvg from "../svg/search-svg";
 import Tabs from "../tabs/tabs";
-import { TopBar, Title, Search, SortBtn, Input, Label, Icon, Form } from "./styles";
+import { TopBar, Title, Search, SortBtn } from "./styles";
 
 function TopAppBar(): JSX.Element {
 
@@ -16,11 +16,7 @@ function TopAppBar(): JSX.Element {
         <Container>
           <Title>Поиск</Title>
           <Search>
-            <Form>
-              <Label>Введи имя, тег, почту</Label>
-              <Input placeholder="Введи имя, тег, почту..."/>
-              <Icon><SearchSvg /></Icon>
-            </Form>
+            <SearchForm />
             <SortBtn aria-label="Выбрать сортировку" onClick={() => setPopupShow(true)}><ListSvg /></SortBtn>
           </Search>
 

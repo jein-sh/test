@@ -3,6 +3,8 @@ export enum AppRoute {
   Profile = '/user/:id',
 }
 
+export const TIMEOUT_SHOW_ERROR = 2000;
+
 export enum Departments {
     all = 'Все',
     android = 'Android',

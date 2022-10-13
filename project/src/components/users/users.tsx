@@ -2,18 +2,28 @@ import { SortType } from "../../const";
 import { useAppSelector } from "../../hooks";
 import { Ul } from "../../styled";
 import { separateDateAfter, separateDateBefore } from "../../untils";
+import ErrorBlock from "../error-block/error-block";
 import User from "../user/user";
 import { UsersContainer, UsersItem, UsersSeparate, UsersYear } from "./styles";
 
 function Users(): JSX.Element {
-
-  const {users} = useAppSelector((state) => state);
+  const {users, searchUsers} = useAppSelector((state) => state);
 
   const {sortType} = useAppSelector((state)=> state);
 
-  const usersBeforeToday = separateDateBefore(users);
+  let renderedUsers = searchUsers ? searchUsers : users;
 
-  const usersAfterToday = separateDateAfter(users)
+  const usersBeforeToday = separateDateBefore(renderedUsers);
+
+  const usersAfterToday = separateDateAfter(renderedUsers);
+
+  if (renderedUsers.length === 0) {
+    return <ErrorBlock
+      errorImg="glass"
+      errorTitle="Мы никого не нашли"
+      errorText="Попробуй скорректировать запрос" 
+    />
+  }
 
   return (
     <UsersContainer>
@@ -42,7 +52,7 @@ function Users(): JSX.Element {
           </Ul>
         </> :
         <Ul>
-          {users.map((user) => {
+          {renderedUsers.map((user) => {
             return(
               <UsersItem key={user.id}>
                 <User user= {user} dateShow={false}/>

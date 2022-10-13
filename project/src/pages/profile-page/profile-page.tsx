@@ -18,7 +18,6 @@ function ProfilePage(): JSX.Element {
   const params = useParams();
   const navigate = useNavigate();
   const {users} = useAppSelector((state) => state);
-  console.log(users, params.id)
   
   const user: UserType | undefined = users.find((user) => user.id === params.id);
 

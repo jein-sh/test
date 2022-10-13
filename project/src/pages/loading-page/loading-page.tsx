@@ -1,19 +1,18 @@
+import UsersSkeleton from '../../components/users-skeleton/users-skeleton';
 import TopAppBar from '../../components/top-app-bar/top-app-bar';
-import Users from '../../components/users/users';
 import Container from '../../styled/container/container';
 
-function MainPage(): JSX.Element {
-
+function LoadingPage(): JSX.Element {
   return (
     <>
       <TopAppBar />
       <main >
         <Container>
-          <Users />
+          <UsersSkeleton />
         </Container>
       </main>
     </>
   );
 }
 
-export default MainPage;
+export default LoadingPage;

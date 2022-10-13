@@ -15,12 +15,13 @@ function User({user, dateShow}:UserProps): JSX.Element {
   const {id, avatarUrl, firstName, lastName, userTag, position, birthday} = user;
   const userBirthday = dayjs(birthday).locale('ru').format('D MMM');
   const tag = userTag.replace(/[^a-zа-я ]/ui,"").slice(0,2);
+  const imgSrc = avatarUrl ? avatarUrl : 'img/goose.png';
 
   return (
     <UserContainer>
       <UserLink onClick={() => navigate(`/user/${id}`)}></UserLink>
       <Avatar>
-        <Img src={avatarUrl} width="72" height="72"/>
+        <Img src={imgSrc} width="72" height="72"/>
       </Avatar>
       <Info>
         <Name>{firstName} {lastName}<Tag>{tag}</Tag></Name>

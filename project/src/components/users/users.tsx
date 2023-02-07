@@ -1,7 +1,7 @@
 import { SortType } from "../../const";
 import { useAppSelector } from "../../hooks";
 import { Ul } from "../../styled";
-import { separateDateAfter, separateDateBefore } from "../../untils";
+import { nextYear, separateDateAfter, separateDateBefore } from "../../untils";
 import ErrorBlock from "../error-block/error-block";
 import User from "../user/user";
 import { UsersContainer, UsersItem, UsersSeparate, UsersYear } from "./styles";
@@ -39,7 +39,7 @@ function Users(): JSX.Element {
             })}
           </Ul>
           <UsersSeparate>
-            <UsersYear>2023</UsersYear>
+            <UsersYear>{nextYear}</UsersYear>
           </UsersSeparate>
           <Ul>
             {usersBeforeToday.map((user) => {

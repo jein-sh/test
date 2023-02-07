@@ -4,6 +4,8 @@ import { SortType } from './const';
 import { UsersType } from './types';
 dayjs.extend(dayOfYear);
 
+export const nextYear = Number(dayjs().format("YYYY")) + 1;
+
 export const getFilterUsers = (users : UsersType, department : string) => {
     if (department === 'all') {
         return users;

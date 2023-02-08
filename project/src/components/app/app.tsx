@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import { AppRoute } from '../../const';
 import { useAppSelector } from '../../hooks';
 import CriticalErrorPage from '../../pages/critical-error-page/critical-error-page';
@@ -33,7 +33,7 @@ function App(): JSX.Element {
   return (
     <>
       <GlobalStyle />
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route
             path={AppRoute.Main}
@@ -48,7 +48,7 @@ function App(): JSX.Element {
             element={<ErrorPage />}
           />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </>
   );
 }
